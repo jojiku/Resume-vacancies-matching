@@ -1,0 +1,5 @@
+celery==5.3.4
+Pillow
+redis
+ultralytics
+yt-dlp
