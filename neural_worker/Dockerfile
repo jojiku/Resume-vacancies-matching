@@ -1,6 +1,6 @@
 FROM python:3.11
 
-RUN apt-get update && apt-get install libgl1 -y
+RUN apt-get update && apt-get install libgl1 ffmpeg -y
 
 WORKDIR /neural_worker
 

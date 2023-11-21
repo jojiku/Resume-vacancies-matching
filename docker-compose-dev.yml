@@ -29,6 +29,7 @@ services:
 
     volumes:
       - ./rabbitmq-data:/var/lib/rabbitmq/mnesia
+      - ./rabbit_conf/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
 
     environment:
       RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
@@ -37,7 +38,7 @@ services:
   
   worker:
     restart: "no"
-    mem_limit: 4G
+    mem_limit: 8G
     container_name: worker
 
     build: 
@@ -52,7 +53,9 @@ services:
       - YOLO_CHECKPOINT=${YOLO_CHECKPOINT}
     
     volumes:
-      - ./neural_worker/example_images:/neural_worker/example_images
+      # - ./neural_worker/example_images:/neural_worker/example_images
+      - static-content:/neural_worker/example_images
+      # - ./neural_worker/labeled_videos:/neural_worker/labeled_videos
 
     depends_on:
       - redis
@@ -80,4 +83,6 @@ services:
 
     ports:
       - 8501:8501
-      
+
+volumes:
+  static-content:

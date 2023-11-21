@@ -27,6 +27,7 @@ services:
 
     volumes:
       - ./rabbitmq-data:/var/lib/rabbitmq/mnesia
+      - ./rabbit_conf/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
 
     environment:
       RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
@@ -35,14 +36,13 @@ services:
   
   worker:
     restart: "no"
-    mem_limit: 4G
+    mem_limit: 8G
     container_name: worker
 
     build: 
       context: ./neural_worker
       dockerfile: Dockerfile
-    # command: bash -c "celery -A celery_services worker -l info -E -c 1 --loglevel=info"
-    command: bash -c "celery -A celery_services worker -l info -E -P solo --loglevel=info"
+    command: bash -c "celery -A celery_services worker -l info -E -P threads --loglevel=info"
 
     environment:
       - CELERY_BROKER_URL=${RABBITMQ_IP}
@@ -50,7 +50,8 @@ services:
       - YOLO_CHECKPOINT=${YOLO_CHECKPOINT}
     
     volumes:
-      - ./neural_worker/example_images:/neural_worker/example_images
+      # - ./neural_worker/example_images:/neural_worker/example_images
+      - static-content:/neural_worker/example_images
 
     depends_on:
       - redis
@@ -93,9 +94,15 @@ services:
       - CELERY_BROKER_URL=${RABBITMQ_IP}
       - CELERY_RESULT_BACKEND=${REDIS_IP}
 
+    volumes:
+      - static-content:/api/videos
+
     ports:
       - 8000:8000
     depends_on:
       - celery-flower
       - worker
       - rabbitmq
+
+volumes:
+  static-content:

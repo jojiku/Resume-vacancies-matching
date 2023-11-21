@@ -45,6 +45,12 @@
 <!-- UPDATES -->
 ## Updates 
 
+### 21.11.2023:
+We trained 2 models (medium and nano) and 2 endoints (image processing and YouTube video labeling), our roadmap is:
+- torch inference (not ultralitics)
+- two-stage pipeline (detector+classificator)
+- change classes (for russian traffic signs)
+
 ### 16.11.2023:
 Currently we trained only one model and implemented one endpoint (image processing), so our roadmap is:
 - interface with more functionality
@@ -62,6 +68,7 @@ For more info please visit <a href="https://puffy-power-aa4.notion.site/Team-19-
 In this project we provide both highly efficient and accurate service for road signs detection using YOLOv8. We are using FastAPI and Celery for backend task creation and processing, and Streamlit for cool and minimalistic frontend. RabbitMQ is being used for Celery broker and Redis is for result backend.
 
 <img src="example_images/service_example.png" height=400 align = "center"/>
+<img src="example_images/labeled_video.png" height=400 align = "center"/>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
