@@ -3,3 +3,4 @@ Pillow
 redis
 ultralytics
 yt-dlp
+efficientnet_pytorch

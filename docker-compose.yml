@@ -48,6 +48,7 @@ services:
       - CELERY_BROKER_URL=${RABBITMQ_IP}
       - CELERY_RESULT_BACKEND=${REDIS_IP}
       - YOLO_CHECKPOINT=${YOLO_CHECKPOINT}
+      - CLS_CHECKPOINT=${CLS_CHECKPOINT}
     
     volumes:
       # - ./neural_worker/example_images:/neural_worker/example_images

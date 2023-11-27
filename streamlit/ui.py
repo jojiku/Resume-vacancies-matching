@@ -22,6 +22,7 @@ def process(image: str):
 
     return r.json()["result"]
 
+st.snow()
 
 # construct UI layout
 st.title(":violet[ITMO] PDL RoadSign Detection Project")
