@@ -45,6 +45,9 @@
 <!-- UPDATES -->
 ## Updates 
 
+### 29.11.2023:
+The final projects consists of 2-stage pipeline (with single YOLO class detector and EfficientNetB0 traffic signs classificator). We reached **14.74** FPS with this pipeline on 13th Gen Intel(R) Core(TM) i9-13900HX CPU, **0.954** mAP0.5 for YOLO and **0.78** F1 for EffNet
+
 ### 21.11.2023:
 We trained 2 models (medium and nano) and 2 endoints (image processing and YouTube video labeling), our roadmap is:
 - torch inference (not ultralitics)
@@ -89,9 +92,9 @@ In this project we provide both highly efficient and accurate service for road s
 
 1. Clone the repo
    ```
-   git clone -b roadsign_detector_main https://github.com/pavviaz/itmo_pdl.git
+   git clone -b trafficsign_detector_main https://github.com/pavviaz/itmo_pdl.git
    ```
-2. Place YOLO checkpoint file into `neural_worker/yolo_weights` directory (<a href="https://disk.yandex.ru/d/-YbSgWYivpSG2A">our weights</a>)
+2. Place YOLO checkpoint file into `neural_worker/yolo_weights` directory (<a href="https://disk.yandex.ru/d/7HrluCKflrv_0w">our weights</a>, `best_yolo.pt` is for YOLO model, `best_cls.pth` is for classification model)
 3. Create `.env` file in root directory with following keys
     ```
     RABBITMQ_IP=amqp://<RABMQ_EXAMPLE_USR>:<RABMQ_EXAMPLE_PASSWD>@rabbitmq:5672/
@@ -102,6 +105,7 @@ In this project we provide both highly efficient and accurate service for road s
     RABBITMQ_PASSWD=<RABMQ_EXAMPLE_PASSWD>
 
     YOLO_CHECKPOINT=<YOLO_CHECKPOINT_FILE_NAME>
+    CLS_CHECKPOINT=<CLS_MODEL_CHECKPOINT_FILE_NAME>
     ``` 
 4. Build & run containers
    ```
