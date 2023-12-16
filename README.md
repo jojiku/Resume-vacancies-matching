@@ -52,11 +52,20 @@
 The final projects consists of ...
 
 ### 15.12.2023:
-We trained 
+We tried four raw (not trained) popular sentence transformers:
+* DistilUsev1
+* DistilUsev2
+* mpnet
+* MiniLM
+Concluded that DistilUsev1, even though it was not trained on our data, had the same quality as Doc2Vec. DistilUsev1 was chosen as a base model.
 
-### 16.11.2023:
-Currently we trained only one model and implemented one endpoint (image processing), so our roadmap is:
- 
+### 13.11.2023:
+Experiments with Doc2Vec were made: 
+Doc2Vec - v1 (vector_size = 50, epochs = 50): 
+Doc2Vec - v2 (vector_size = 50, epochs = 50): 
+Doc2Vec - v3 (vector_size = 50, epochs = 50): 
+Doc2Vec - v4 (vector_size = 50, epochs = 50): 
+Doc2Vec - v5 (vector_size = 50, epochs = 50): 
 
 For more info please visit <a href="https://puffy-power-aa4.notion.site/Team-19-Traffic-Signs-Recognition-ee2c3f596a6044a69077984fbe6354d8">our notion page</a>.
 <!-- preprocessing -->
