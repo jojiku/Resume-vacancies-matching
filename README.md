@@ -61,11 +61,11 @@ Concluded that DistilUsev1, even though it was not trained on our data, had the 
 
 ### 13.11.2023:
 Experiments with Doc2Vec were made: 
-Doc2Vec - v1 (vector_size = 50, epochs = 50): 
-Doc2Vec - v2 (vector_size = 50, epochs = 50): 
-Doc2Vec - v3 (vector_size = 50, epochs = 50): 
-Doc2Vec - v4 (vector_size = 50, epochs = 50): 
-Doc2Vec - v5 (vector_size = 50, epochs = 50): 
+Doc2Vec - v1 (vector_size = 35, epochs = 50): positive similarity = 0.414, positive similarity = 0.298, difference = 0.116. Meteor score: 0.342, 
+Rouge score: 0.28.
+
+Doc2Vec - v2 (vector_size = 15, epochs = 50): positive similarity = 0.158, positive similarity = 0.106, difference = 0.0515. Meteor score: 0.126, 
+Rouge score: 0.103.
 
 For more info please visit <a href="https://puffy-power-aa4.notion.site/Team-19-Traffic-Signs-Recognition-ee2c3f596a6044a69077984fbe6354d8">our notion page</a>.
 <!-- preprocessing -->
