@@ -1,0 +1,52 @@
+version: '2.3'
+
+# export DB_NAME=res_vac_db DB_USER=user DB_PASSWORD=passwd DB_HOST=localhost DB_PORT=5044 EMBEDDER_URL="http://0.0.0.0:5043"
+services:
+  embedder:
+    restart: always
+    container_name: embedder
+    mem_limit: 4G
+
+    build:
+      context: ./embedder
+      dockerfile: Dockerfile
+      
+    volumes:
+      - ./embedder:/embedder
+    command: bash -c "uvicorn main:app --host 0.0.0.0 --port 5043"
+    ports:
+      - 5043:5043
+
+  postgres:
+    restart: always
+    container_name: postgres
+    mem_limit: 100m
+    image: postgres:13.3
+    
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/pgdata
+    command: "-p 5044"
+    ports:
+      - 5044:5044
+  
+  streamlit:
+    container_name: streamlit
+    build: 
+      context: ./streamlit
+      dockerfile: Dockerfile
+
+    volumes:
+      - ./streamlit:/streamlit
+
+    command: ['streamlit', 'run', 'ui.py']
+
+    network_mode: host
+
+    ports:
+      - 8501:8501
+

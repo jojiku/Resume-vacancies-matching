@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]==0.23.2
+python-multipart
+orjson
+sqlalchemy==2.0.20
+asyncpg
+aiohttp
+python-multipart
+numpy==1.25.1
+faiss-cpu==1.7.4
+requests==2.28.1
+psycopg2-binary==2.9.5
+pandas
